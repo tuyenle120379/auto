@@ -1,7 +1,7 @@
 package Enum;
 
 public enum ColumnsInWebTable {
-	DATE_SUBMITTED(3);
+	REQUEST_STATUS(1),DATE_SUBMITTED(2);
 
 	private int value;
 

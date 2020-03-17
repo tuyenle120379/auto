@@ -32,9 +32,11 @@ public class PageAction {
 		getAttribute = new GetAttribute(locator, value);
 	}
 
-	public PageAction(String locator, int iAtCol, int year) {
-		countCellsByColumnAndCondition = new CountCellsByColumnAndCondition(locator, iAtCol, year);
+	public PageAction(String locator, int iAtCol, String requestStatus, int iAtCol2, int iYear) {
+		countCellsByColumnAndCondition = new CountCellsByColumnAndCondition( locator,  iAtCol,  requestStatus,  iAtCol2, iYear);
 	}
+
+	
 
 	public void click() throws StopTest {
 		click.execute();

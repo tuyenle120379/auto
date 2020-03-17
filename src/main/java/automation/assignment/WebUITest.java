@@ -43,9 +43,11 @@ public class WebUITest {
 
 	}
 
-	public int countDateSubmitted(String xpath, int iAtCol, int year) throws StopTest {
+	public int countDateSubmitted(String xpath, int iAtCol, String requestStatus, int iAtCol2, int year) throws StopTest {
 		// TODO Auto-generated method stub
-		return new PageAction(xpath, iAtCol, year).countCellsByColumnAndCondition();
+		return new PageAction(xpath, iAtCol, requestStatus, iAtCol2, year).countCellsByColumnAndCondition();
 	}
+
+	
 
 }

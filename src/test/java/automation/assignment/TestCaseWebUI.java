@@ -28,10 +28,10 @@ public class TestCaseWebUI {
 		action.type("id=formHorizontalEmail", "admin@test.com");
 		action.type("id=formHorizontalPassword", "test123");
 		action.click("linkText=LOG IN");
-		assertEquals(8,
+		assertEquals(5,
 				action.countDateSubmitted(
 						"xpath=//*[@id=\"root\"]/div/div[2]/div/div/div[2]/div/div/div[1]/div[2]/table",
-						ColumnsInWebTable.DATE_SUBMITTED.getValue(), 2019));
+						ColumnsInWebTable.REQUEST_STATUS.getValue(), "Approved", ColumnsInWebTable.DATE_SUBMITTED.getValue(), 2019));
 	}
 
 	@After

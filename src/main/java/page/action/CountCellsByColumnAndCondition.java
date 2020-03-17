@@ -14,31 +14,31 @@ import exception.StopTest;
 import page.api.WebUIApi;
 
 public class CountCellsByColumnAndCondition extends WebUIApi {
-	private final int iYear;
 	private final int iAtCol;
+	private final String requestStatus;
+	private final int iYear;
+	private final int iAtCol2;
 
-	public CountCellsByColumnAndCondition(String locator, int iAtCol, int iYear) {
+
+	public CountCellsByColumnAndCondition(String locator, int iAtCol, String requestStatus, int iAtCol2, int iYear) {
 		super(locator, locator + Dom.TABLE_TR.toString());
-		this.iYear = iYear;
 		this.iAtCol = iAtCol;
+		this.requestStatus = requestStatus;
+		this.iAtCol2 = iAtCol2;
+		this.iYear = iYear;
+		
+		
 	}
 
 	@Override
 	public int countCells() throws StopTest {
 		List<WebElement> domTRs = getChildElements();
-		List<String> cells = new ArrayList<String>();
-		int colNumber;
+		int count=0;
 		for (WebElement domTR : domTRs) {
 			List<WebElement> domTDs = domTR.findElements(By.xpath(Dom.TD.toString()));
-			colNumber = 1;
-			for (WebElement domTD : domTDs) {
-				String cellText = domTD.getText();
-				if ((colNumber == iAtCol) && (getYear(cellText) == iYear))
-					cells.add(cellText);
-					colNumber++;
-			}
+			if ((domTDs.get(iAtCol).getText().compareToIgnoreCase(requestStatus)==0) && (getYear(domTDs.get(iAtCol2).getText()) == iYear)) count++;
 		}
-		return cells.size();
+		return count;
 	}
 
 	@SuppressWarnings("deprecation")
@@ -50,4 +50,5 @@ public class CountCellsByColumnAndCondition extends WebUIApi {
 			return 0;
 		}
 	}
+	
 }
